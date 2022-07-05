@@ -416,14 +416,14 @@ def make_cluster_edge(G_cluster, G_orig, rejectingNodesDict, removeCycles, DEBUG
 #method to test whether our input graph is correctly forming clusters, then runs dynamic programming
 #input -- n, number of nodes in random graph
 #           c, criticality
-def testOriginaltoCluster(G, n, c, removeCycles, DEBUG):
+def testOriginaltoCluster(G, n, c, removeCycles, DEBUG, graph_type):
     setAllNodeAttributes(G)
     #showOriginalGraph(G, c)
     saveOriginalGraph(G, c, "tests/original_graph.txt")
     G_cluster = buildClusteredSet(G, c, removeCycles, DEBUG)
     if G_cluster == False:
         print("DIDNT WORK-----------------")
-        clearVisitedNodesAndDictionaries(G)
+        clearVisitedNodesAndDictionaries(G, graph_type)
         return False
     '''
     f = open("make_matrix.txt", "a")
@@ -433,7 +433,7 @@ def testOriginaltoCluster(G, n, c, removeCycles, DEBUG):
     f.write("node data:" + str(G_cluster.nodes.data()) + "\n")
     f.close()
     '''
-    clearVisitedNodesAndDictionaries(G)
+    clearVisitedNodesAndDictionaries(G, graph_type)
     return G_cluster
 
 def showOriginalGraph(G, c):
