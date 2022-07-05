@@ -182,7 +182,7 @@ def runTests(num_nodes, k, criticality):
 
         #compute payoff for recursive DP
         start = timeit.default_timer()
-        payoff_root, payoff_no_root = dp.runRecursiveDP(G, k)
+        payoff_root, payoff_no_root = dp.runRecursiveDP(G, k, graph_type)
         payoff_recursive_dp = max(payoff_root, payoff_no_root)
         stop = timeit.default_timer()
         runtime_recursive_DP = stop - start
