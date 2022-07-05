@@ -88,7 +88,7 @@ def captureClusterDistribution(graph_type):
         cc.close()
 
 #clear dictionaries for next graph to test
-def clearVisitedNodesAndDictionaries(G):
+def clearVisitedNodesAndDictionaries(G, graph_type):
     captureClusterDistribution(graph_type)
     setVisitedFalse(G)
     rejectingNodeDict.clear()
