@@ -11,7 +11,7 @@ Driver function for running dynamic programming
     G --> graph for which we are choosing seeds
     k --> number of seeds to pick
 """
-def runRecursiveDP(G, k):
+def runRecursiveDP(G, k, graph_type):
     #makeMatrix(G, G.number_of_nodes())
 
     storePayoff = [ [ [None] * (k+1) for _ in range(G.number_of_nodes())] for _ in range(2)]
