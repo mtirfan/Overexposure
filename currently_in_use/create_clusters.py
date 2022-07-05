@@ -72,8 +72,24 @@ def createClusterGraph(n, maxWeight):
     print("created cluster graph")
     return G
 
+def captureClusterDistribution(graph_type):
+    distribution = dict()
+    values = clusterDict.values()
+    for element in values:
+        if len(element) not in distribution:
+            distribution[len(element)] = 1
+        else:
+            distribution[len(element)] = distribution[len(element)] + 1
+    with open('captureCluster.txt', 'a') as cc:
+        cc.write(graph_type + ':' + "\n")
+        for number, frequency in distribution.items():
+            cc.writelines(str(number) + ": " + str(frequency) + ", ")
+        cc.write("\n")
+        cc.close()
+
 #clear dictionaries for next graph to test
 def clearVisitedNodesAndDictionaries(G):
+    captureClusterDistribution(graph_type)
     setVisitedFalse(G)
     rejectingNodeDict.clear()
     clusterDict.clear()
